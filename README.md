@@ -11,6 +11,7 @@ Website for all physics, mathematics, computer science, chemistry, and electrica
 <p>Cool QM resources:
  
 <a href = "https://plato.stanford.edu/entries/qt-quantlog/#QuanProbNuts"> Intensely Rigorous Treatment of Probabilistic QM </a>
+<br>
 <a href = "https://sites.astro.caltech.edu/~golwala/ph125ab/ph125_notes_2007.pdf"> Caltech Ph125 Lecture Notes. Follows Directly From Shankar's Text </a>
 
 

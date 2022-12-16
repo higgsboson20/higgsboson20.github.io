@@ -17,7 +17,15 @@ Website for all physics, mathematics, computer science, chemistry, and electrica
 
 
 </p>
-
+ 
+ <p>
+  Terraria QOL Mod:
+  - Hotkey to switch ammo type
+  - Dungeon courtyard (mini-biome in front of the dungeon)
+  - Ability to initiate different types of melee attacks (eg: heavy attack, light attack, attack from above, ...)
+  - Balance gold... wtf?
+  - 
+ </p>
 </body>
 </html>
 

@@ -6,6 +6,8 @@ Website for all physics, mathematics, computer science, chemistry, and electrica
 <body>
 
 <h1>My First Heading</h1>
+<p> Best QM textbook ever created: </p>
+<img src = "s-l1600.jpg" alt = "holy book">
 
 <p>Cool QM resources:
  

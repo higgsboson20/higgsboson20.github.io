@@ -2,7 +2,6 @@
 Website for all physics, mathematics, computer science, chemistry, and electrical engineering resources
 
 
-<!DOCTYPE html>
 <html>
 <body>
 

@@ -15,6 +15,8 @@ Website for all physics, mathematics, computer science, chemistry, and electrica
 <br>
 <a href = "https://sites.astro.caltech.edu/~golwala/ph125ab/ph125_notes_2007.pdf"> Caltech Ph125 Lecture Notes. Follows Directly From Shankar's Text </a>
 
+<a href = "https://archive.nptel.ac.in/content/storage2/courses/122106034/quantumphysics.pdf"> IIT Madras Course on QM (very rigorous) </a>
+
 
 </p>
  

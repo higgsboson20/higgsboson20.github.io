@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<title>Home</title>
 <div class = "navbar">
     <a href = #EEClub-home.html>Home</a>
     <a href = #EEClub-resources.html>Resources</a>

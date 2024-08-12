@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Asbell</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src = "../src/index.js" defer></script>
+</head>
+<body id = "page">
+    <!-- Profile Section -->
+    <div id="samModal" class="modal" >
+        <div class="modal-content-sam">
+            <span class="close" onclick = "onProfileClose()">&times;</span>
+            <h2 class = "title">Some Trinkets I've Made</h2>
+            <div class = "trinketPhotoLayout">
+                <img src = "../img/PXL_20230202_021654909.jpg" alt = "knife" class = "trinketPhoto">
+                <img src = "../img/PXL_20230317_191859559.jpg" alt = "spoon" class = "trinketPhoto">
+                <img src = "../img/PXL_20230324_185028777.jpg" alt = "candle" class = "trinketPhoto">
+            </div>
+                
+            <div class = "trinketPhotoLayout">
+                <img src = "../img/PXL_20230324_192409767.jpg" alt = "knife" class = "trinketPhoto">
+                <img src = "../img/PXL_20240513_004218131.jpg" alt = "knife" class = "trinketPhoto">
+                <img src = "../img/PXL_20240513_004453369.jpg" alt = "knife" class = "trinketPhoto">
+            </div>
+            
+        </div>
+    </div>
+
+    <section id="profile">
+        <div class="profileContainer" onclick="onProfileClick()">
+
+            <img src="../img/metalbeating.png" alt="Profile Photo" class="photo">
+          
+            
+            <div class="description">
+                <h1>Sam Asbell</h1>
+                <p>I hit slabs of hot metal from time-to-time, as a blacksmith; but most of the time, I design web apps, physics and engineering simulators,
+                    and firmware. I am looking for intern software engineering positions, so that I can contribute
+                    well-documented code for your projects and codebases.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick = "closeCourses()">&times;</span>
+            <h2>Courses Taken</h2>
+            <ul>
+                <li>Object Oriented Programming &mdash; C++ / Java</li>
+                <li>Data Structures and Algorithms &mdash; Python</li>
+                <li>Advanced Algorithms</li>
+                <li>Discrete Math</li>
+                <li>Software Engineering &mdash; Java</li>
+                <li>Operating Systems &mdash; C</li>
+                <li>Computer Networks &mdash; Python</li>
+                <li>Statistical Programming &mdash; Python</li>
+                <li>Embedded Systems &mdash; C</li>
+                <li>Computer Architecture &mdash; Verilog</li>
+                <li>Parallel Computing &mdash; C / OpenMP / OpenMPI / CUDA</li>
+                <li>Programming Languages &mdash; Go</li>
+                <!-- Add more courses as needed -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- School Section -->
+    <section id="school">
+        <div class="container">
+            <img src="../img/UCDavisUnofficialSeal_2Color_0.png" alt="School Logo" class="photo">
+            <div class="school-info">
+                <h2>UC Davis</h2>
+                <ul>
+                    <li> Computer Science and Engineering Major | 2023 -- 2025</li>
+                    <li> Software Design Lead and Web Developer @ <a href = https://cyclone-robosub.github.io target = "_blank"> Cyclone Robosub</a></li>
+                    <li> <a href="#" id="viewCourses" onclick="showCourses()"> View Courses I've Taken!</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" >
+        <div class="container">
+            <h2>Personal Projects</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Circuitland</h3>
+                    <p>WIP analog and digital circuit simulator powered by Electron. Equipped with a circuit designing canvas, batch testing support, and a signal analysis tool.</p>
+                    <p> Stack: </p>
+                    <ul>
+                        <li> Electron (JS / HTML / CSS)</li>
+                        <li> Node.js</li>
+                        <li> ESLint</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>MyCC3200</h3>
+                    <p> Designed a voice activated smart-hub which reads temperature data and turns on lights. Makes calls
+                        to an AWS cloud backend, which performs voice transcription and calls to an AWS Lambda function.
+                    </p>
+                    <p> Stack: </p>
+                    <ul>
+                        <li> CC3200 Embedded Board</li>
+                        <li> C-based firmware with I2C and SPI drivers</li>
+                        <li> Adafruit OLED screen for status messages, connected with SPI</li>
+                        <li> AWS IoT shadow, updated via a REST API</li>
+                        <li> AWS Transcribe, for NLP</li>
+                        <li> AWS Lambda, for automated function calls to AWS Transcribe</li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "photoArea" style = "top:45rem;left:50rem" id = "github"> 
+                <a href = "https://github.com/higgsboson20" target = "_blank"><img src="../img/github.png" alt="School Logo" style="width: 300px; height: 300px"></a>
+                <h2 class="below-text">My Github</h2>
+            </div>
+            <div class = "photoArea" style = "top:30rem;left:70rem" id = "resume"> 
+                <a href = "../public/ResumeSAsbell.pdf" download = "ResumeSamAsbell.pdf"><img src="../img/resumeIcon.png" alt="School Logo" style="width: 400px; height: 300px"></a>
+                <h2 class="below-text">My Resume</h2>
+            </div>
+            <div class = "photoArea" style = "top:60rem;left:75rem" id = "linkedin"> 
+                <a href = "https://www.linkedin.com/in/sam-asbell-873757163/" target = "_blank"><img src="../img/linkedin.png" alt="School Logo" style="width: 240px; height: 240px"></a>
+                <h2 class="below-text">My LinkedIn</h2>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Internships Section -->
+
+    <section id="internships">
+        <div class="container">
+            <h2>Internships</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="../img/DMV_Logo.png" alt="School Logo" class="photo">
+                    <h3>Software Engineer</h3>
+                </div>
+                <div class="card">
+                    <img src="../img/bshrlfcxnb1lfwrjvpz7.webp" alt="School Logo" class="photo">
+                    <h3>Student Researcher</h3>
+                </div>
+                <div class="card">
+                    <img src="../img/MSC-Logo_Rev2a.png" alt="School Logo" class="photo">
+                    <h3>Systems Engineer Intern</h3>        
+                </div>
+                <div class="card">
+                    <img src="../img/sierra.png" alt="School Logo" class="photo">
+                    <h3>Advanced Math Tutor</h3>     
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="container">
+            <p>Sam Asbell</p>
+            <p>Contact: <a href="mailto:stasbell@ucdavis.edu" target = "_blank">stasbell@ucdavis.edu</a></p>
+        </div>
+    </footer>
+</body>
+</html>

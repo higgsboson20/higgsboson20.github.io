@@ -12,7 +12,6 @@ body {
     z-index: 1;
 }
 
-
 #icons .container {
     display: flex;
     justify-content: space-around;
@@ -184,3 +183,46 @@ footer a {
     justify-content: center;
 }
 
+
+.fixed-circle-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px; /* Fixed radius to create a circle */
+    object-fit: cover;
+}
+
+.card-body ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.internship-card {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.btn-link {
+    font-weight: bold;
+}
+
+.card-img {
+    width: 100%;
+    height: 230px;
+    object-fit: fill;
+}
+
+.profile-container .card-body {
+    font-size: 1.25rem;
+}

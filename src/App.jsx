@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -25,18 +24,20 @@ function App() {
 
 function Navigation() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-            <Link className="navbar-brand ml-2" to="/">Sam Asbell</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/education">Education</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/internships">Internships</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/projects">Projects</Link></li>
-                </ul>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+            <div className="container">
+                <Link className="navbar-brand ms-2" to="/">Sam Asbell</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ms-auto">
+                        <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/education">Education</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/internships">Internships</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/projects">Projects</Link></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     );
@@ -59,29 +60,21 @@ function Home() {
 
 function About() {
     return (
-        <section className="container my-5">
-            <div className="row">
-                <div className="col-md-4">
-                    <img src="../img/metalbeating.png" alt="Profile Photo" className="img-fluid rounded-circle" />
+        <section className="container my-5 modern-section">
+            <div className="row align-items-center">
+                <div className="col-md-4 text-center">
+                    <img src="../img/metalbeating.png" alt="Profile" className="img-fluid rounded-circle mb-3" />
                 </div>
                 <div className="col-md-8">
                     <h2>About Me</h2>
-                    <p>Computer science engineering student passionate about all levels of the IT stack, with intensive experience
-                        developing software, firmware, and embedded systems.
+                    <p>
+                        Computer science engineering student passionate about all levels of the IT stack, with intensive experience in software, firmware, and embedded systems.
                     </p>
                     <p>
-                        I find particular interest in software engineering due to the amount of new stuff I learn during every
-                        project and the fact that I can see the results of my work in real-time. My particular fields of interest in 
-                        software center around modelling and visualizing systems in fields such as materials science, robotics, and
-                        games. I am highly competent in most common languages, and have an in-depth, intuitive understanding of what goes on
-                        beneath the hood. With this, I have experience with embedded systems, IoT, and digital circuit design.
+                        I love the dynamic nature of software engineering—every project brings new challenges and opportunities to learn. My expertise spans modeling and visualizing complex systems in fields such as materials science, robotics, and gaming, paired with a deep understanding of the underlying technologies.
                     </p>
                     <p>
-                        If you are to take me on as an engineer for your team, you will find that I am a quick learner, a team player who understands cross-functionality principles, 
-                        and someone who is committed to finding the most optimal solution to any hard problem I encounter.
-                    </p>
-                    <p>
-                        When all is done, I enjoy blacksmithing, working on cars, backpacking, biking, and grilling.
+                        I’m a quick learner, a collaborative team player, and a problem solver dedicated to finding optimal solutions. When I'm not coding, I enjoy blacksmithing, working on cars, backpacking, biking, and grilling.
                     </p>
                 </div>
             </div>
@@ -91,27 +84,25 @@ function About() {
 
 function Education() {
     return (
-        <section className="container my-5">
+        <section className="container my-5 modern-section">
             <h2>Education</h2>
-            <div className="card my-5">
-                <div className="row no-gutters">
-                    <div className="col-md-4">
-                        <img src="../img/UCDavisUnofficialSeal_2Color_0.png" className="img-fluid rounded-circle" alt="UC Davis Logo" />
+            <div className="card modern-card my-5">
+                <div className="row g-0">
+                    <div className="col-md-4 text-center">
+                        <img src="../img/UCDavisUnofficialSeal_2Color_0.png" className="img-fluid rounded-circle p-3" alt="UC Davis Logo" />
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
                             <h3 className="card-title">UC Davis</h3>
                             <p>Bachelor's in Computer Science (2023 - 2025)</p>
-                            <p>Founding Software Lead @ <a href="https://cyclone-robosub.github.io" target="_blank" rel="noopener noreferrer">Cyclone Robosub</a></p>
-                            <label>Relevant Courses</label>
-                            <div id="courses">
-                                <ul>
-                                    <li>Object Oriented Programming (C++/Java)</li>
-                                    <li>Data Structures & Algorithms (Python)</li>
-                                    <li>Operating Systems, Embedded Systems, Computer Networks</li>
-                                    <li>Graduate and undergraduate computer architecture </li>
-                                </ul>
-                            </div>
+                            <p>Founding Software Lead at <a href="https://cyclone-robosub.github.io" target="_blank" rel="noopener noreferrer">Cyclone Robosub</a></p>
+                            <h5>Relevant Courses</h5>
+                            <ul>
+                                <li>Object Oriented Programming (C++/Java)</li>
+                                <li>Data Structures & Algorithms (Python)</li>
+                                <li>Operating Systems, Embedded Systems, Computer Networks</li>
+                                <li>Graduate and Undergraduate Computer Architecture</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -121,22 +112,43 @@ function Education() {
 }
 
 const Card = ({ imgSrc, title, date, detailsId, children }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [flipped, setFlipped] = useState(false);
 
     return (
-        <div className="card internship-card mt-3">
-            <div className="row no-gutters">
-                <div className="col-md-4">
-                    <img src={imgSrc} className="card-img" alt="Image" />
+        <div
+            className="flip-card card modern-card internship-card mt-4 h-100"
+            onClick={() => setFlipped(!flipped)}
+        >
+            {/* Inner container handles the 3D flip */}
+            <div className={`flip-card-inner ${flipped ? 'flipped' : ''}`}>
+                {/* FRONT FACE */}
+                <div className="flip-card-front h-100 w-100">
+                    <div className="row g-0 h-100">
+                        <div className="col-md-4">
+                            <div className="card-img-container">
+                                <img src={imgSrc} className="card-img" alt={title} />
+                            </div>
+                        </div>
+                        <div className="col-md-8 d-flex flex-column">
+                            <div className="card-body flex-grow-1">
+                                <h5 className="card-title">{title}</h5>
+                                <p className="card-date text-muted">{date}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="col-md-8">
-                    <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
-                        <h4>{date}</h4>
-                        <button className="btn btn-link" onClick={() => setIsOpen(!isOpen)}>
-                            {isOpen ? 'Hide Details' : 'View Details'}
-                        </button>
-                        {isOpen && <div id={detailsId}>{children}</div>}
+
+                {/* BACK FACE */}
+                <div className="flip-card-back h-100 w-100">
+                    <div className="row g-0 h-100">
+                        <div className="col-12 d-flex flex-column">
+                            <div className="card-body flex-grow-1">
+                                <h5 className="card-title">Description</h5>
+                                <div id={detailsId} className="card-details flex-grow-1">
+                                    {children}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -144,35 +156,33 @@ const Card = ({ imgSrc, title, date, detailsId, children }) => {
     );
 };
 
-// https://github.com/higgsboson20/CUDA_Gaussian_Blur
+
+
 function Projects() {
     return (
-        <section className="container mt-5">
+        <section className="container my-5 modern-section">
             <h2>Projects</h2>
             <Card
                 imgSrc="../img/IoTProj.png"
                 title="IoT Smart Home Device"
                 date="June 2024"
-                detailsId="eec172"
+                detailsId="iot-project"
             >
                 <p>
-                Designed and implemented C-based firmware on the TI CC3200 embedded board, utilizing I2C and SPI drivers to interface with
-                temperature and proximity sensors for real-time data collection. Utilized AWS Transcribe for voice transcription and AWS Lambda for automating actions 
-                based on voice commands, enabling a seamless interaction between the user and the smart hub.
+                    Designed and implemented C-based firmware on the TI CC3200 embedded board, utilizing I2C and SPI drivers to interface with temperature and proximity sensors for real-time data collection. Integrated AWS Transcribe for voice transcription and AWS Lambda for automated responses, delivering a seamless smart home experience.
                 </p>
-                <label> Backend Design Document </label>
-                <img src="../img/IoTDesignDoc.png" alt="IoT Project Design Doc" className="img-fluid" />
+                <h6>Backend Design Document</h6>
+                <img src="../img/IoTDesignDoc.png" alt="IoT Design Document" className="img-fluid my-2" />
             </Card>
             <Card
                 imgSrc="../img/gaussian.webp"
-                title="Gaussian Blur Function Implemented in CUDA"
+                title="Gaussian Blur with CUDA"
                 date="May 2024"
-                detailsId="ecs158"
+                detailsId="gaussian-blur"
             >
                 <p>
-                Developed a GPU-accelerated image processing pipeline using CUDA, implementing parallel algorithms for tasks like edge detection
-                and filtering, significantly improving processing speed relative to serial. Can be efficiently used to blur images of very large 
-                resolutions. <a href = "https://github.com/higgsboson20/CUDA_Gaussian_Blur" target="_blank">Link to code.</a>
+                    Developed a GPU-accelerated image processing pipeline using CUDA, implementing parallel algorithms for edge detection and filtering. The solution dramatically improved processing speed, making it effective for high-resolution image manipulation.
+                    <a href="https://github.com/higgsboson20/CUDA_Gaussian_Blur" target="_blank" rel="noopener noreferrer">View Code</a>
                 </p>
             </Card>
         </section>
@@ -181,55 +191,58 @@ function Projects() {
 
 function Internships() {
     return (
-        <section className="container mt-5">
+        <section className="container my-5 modern-section">
             <h2>Internships</h2>
-            <Card
-                imgSrc="../img/DMV_Logo.png"
-                title="California DMV - Software Engineer Intern"
-                date="June 2024 - Present"
-                detailsId="dmv"
-            >
-                <p>
-                    Developed full-stack automated testing solutions using JUnit, Selenium, and JavaScript, significantly improving the reliability and engineer experience of the DMV's web applications by eliminating legacy script deadlocks, boosting testing efficiency by over 50%.
-                    Collaborated with Agile, cross-functional teams across UI/UX design and DevOps to troubleshoot system performance, enhance backend-to-frontend integration, and improve overall application reliability.
-                </p>
-            </Card>
-            <Card
-                imgSrc="../img/splash.svg"
-                title="Splash Technologies - Founding Full Stack Engineer"
-                date="September 2024 - December 2024"
-                detailsId="splash"
-            >
-                <p>
-                    One of the lead developing founders of a startup dedicated to designing cloud-based pool maintenance solutions. I worked
-                    on connecting our pool monitoring and chemical dispensing system to the cloud, where the user can interact with it 
-                    and receive analytics pertaining to their pool quality. Alongside, I contributed to the systems design of their 
-                    hardware-database interface.
-                </p>
-            </Card>
-            <Card
-                imgSrc="../img/michigan.webp"
-                title="University of Michigan - Computational Materials Researcher"
-                date="May 2023 - August 2023"
-                detailsId="umich"
-            >
-                <p>
-                    Performed hands-on and computational research on wide bandgap semiconductors, specifically Gallium Nitride. 
-                    Molecular dynamics sims were done through monte carlo methods, written in C++. Handled scripting with Python and 
-                    handled mathematical calculations with MATLAB.
-                </p>
-            </Card>
-            <Card
-                imgSrc="../img/MSC-Logo_Rev2a.png"
-                title="Matrix Switch Corp - Systems Engineering Intern"
-                date="July 2022 - October 2022"
-                detailsId="matrix"
-            >
-                <p>
-                    Led Python development for configuring the Matrix Switch 4x1 Crosspoint board (4 analog inputs, 1 analog output) for testing, 
-                    ensuring all configurations were accurately programmed into the system, significantly enhancing the efficiency of hardware testing against known working code.
-                </p>
-            </Card>
+            <div className="row g-4">
+                <div className="col-md-6">
+                    <Card
+                        imgSrc="../img/DMV_Logo.png"
+                        title="Department of Motor Vehicles - Software Engineer Intern"
+                        date="June 2024 - Present"
+                        detailsId="dmv"
+                    >
+                        <p>
+                            Developed full-stack automated testing solutions using JUnit, Selenium, and JavaScript, improving application reliability by over 50%. Collaborated with Agile, cross-functional teams to enhance system performance and integration.
+                        </p>
+                    </Card>
+                </div>
+                <div className="col-md-6">
+                    <Card
+                        imgSrc="../img/splash.svg"
+                        title="Splash Technologies - Founding Software Development Intern"
+                        date="September 2024 - December 2024"
+                        detailsId="splash"
+                    >
+                        <p>
+                            As a lead developing founder, I contributed to designing a cloud-based pool maintenance solution, connecting hardware with a user-friendly interface and robust analytics.
+                        </p>
+                    </Card>
+                </div>
+                <div className="col-md-6">
+                    <Card
+                        imgSrc="../img/michigan.webp"
+                        title="University of Michigan ECE - Computational Materials Researcher"
+                        date="May 2023 - August 2023"
+                        detailsId="umich"
+                    >
+                        <p>
+                            Conducted hands-on and computational research on wide bandgap semiconductors, specifically Gallium Nitride, using C++, Python, and MATLAB for simulations and data analysis.
+                        </p>
+                    </Card>
+                </div>
+                <div className="col-md-6">
+                    <Card
+                        imgSrc="../img/MSC-Logo_Rev2a.png"
+                        title="Matrix Switch Corp - Embedded Software Engineering Intern"
+                        date="July 2022 - October 2022"
+                        detailsId="matrix"
+                    >
+                        <p>
+                            Led Python development for configuring a 4x1 Crosspoint board, enhancing hardware testing efficiency by ensuring accurate configurations and streamlining the testing process.
+                        </p>
+                    </Card>
+                </div>
+            </div>
         </section>
     );
 }
@@ -237,10 +250,11 @@ function Internships() {
 function Footer() {
     return (
         <footer className="bg-dark text-white text-center py-3">
-            <p>&copy; 2024 Sam Asbell</p>
+            <div className="container">
+                <p className="mb-0">&copy; 2024 Sam Asbell. All rights reserved.</p>
+            </div>
         </footer>
     );
 }
 
 export default App;
-// <a target="_blank" href="https://matrixswitchcorp.com/model-msc-utx41l/#tab-id-1">

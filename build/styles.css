@@ -1,0 +1,228 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+#icons .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.profileContainer {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.profileContainer:hover {
+    background: linear-gradient(to right, #888888 0%, #cccccc 100%); /* Initial gradient */
+    background-size: 200% 100%; /* Set the background size larger than the container */
+    background-position: left bottom; /* Start the gradient on the left */
+    transition: background-position 0.5s ease-in-out; /* Smooth transition for background position */
+    /*background-position: right bottom; /* Shift the background to the right on hover */
+}
+
+#profile, #school, #internships, #projects {
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.photo {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.trinketPhoto {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+}
+
+
+.trinketPhotoLayout {
+    display: flex;
+    justify-content: center;
+}
+
+.description {
+    overflow: hidden;
+}
+
+.school-info {
+    overflow: hidden;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #f4f4f4;
+    margin: 10px;
+    padding: 15px;
+    width: calc(50% - 40px);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.photoArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Move slightly down to create an upward animation */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+   /* top:  1000px; /* Distance from the top of the container */
+   /* left: 900px; /* Distance from the left of the container */
+}
+
+.photoArea.visible {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Return to original position */
+}
+
+.photoArea.visible:hover{
+    filter: brightness(1.2); /* Increase brightness by 20% */
+    transform: scale(1.05); /* Slightly scale up the image */
+}
+
+.below-text {
+    margin-top: 1px; /* Space between the icon and the text */
+    font-size: 24px; /* Adjust text size */
+    text-align: center; /* Center the text */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+
+.modal-content-sam {
+    background-color: #111010;
+    margin: 5% auto;
+    padding: 20px;
+    border: 3px solid #514a4a;
+    color: white;
+    width: 80%;
+    max-width: 1000px;
+    height: 700px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.title {
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.fixed-circle-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px; /* Fixed radius to create a circle */
+    object-fit: cover;
+}
+
+.card-body ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.internship-card {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.btn-link {
+    font-weight: bold;
+}
+
+.card-img {
+    width: 100%;
+    height: 230px;
+    object-fit: fill;
+}
+
+.profile-container .card-body {
+    font-size: 1.25rem;
+}

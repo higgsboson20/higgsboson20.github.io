@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/public/static/css/main.1fcd3004.css",
-    "main.js": "/public/static/js/main.6ee185fe.js",
-    "static/media/metalbeating.png": "/public/static/media/metalbeating.7b22e5cdd28d32acfcb1.png",
-    "static/media/IoTDesignDoc.png": "/public/static/media/IoTDesignDoc.2c1f82bb51eab09b1e78.png",
-    "static/media/IoTProj.png": "/public/static/media/IoTProj.e651aaddb7db610f703e.png",
-    "static/media/headshot.jpg": "/public/static/media/headshot.dd1757f14a8b085f0886.jpg",
-    "static/media/gaussian_blur.png": "/public/static/media/gaussian_blur.fd6362c7005d4442c140.png",
-    "static/media/DMV_Logo.png": "/public/static/media/DMV_Logo.df9f2b5b9f2410b412dd.png",
-    "static/media/UCDavisUnofficialSeal_2Color_0.png": "/public/static/media/UCDavisUnofficialSeal_2Color_0.d021cbb727bff5d088be.png",
-    "static/media/MSC-Logo_Rev2a.png": "/public/static/media/MSC-Logo_Rev2a.fd5aafdb1b47346df866.png",
-    "static/media/splash.svg": "/public/static/media/splash.20250be80b9fb84f8a5c17182d832bfc.svg",
-    "static/media/michigan.webp": "/public/static/media/michigan.dfbce88764b4694ef904.webp",
-    "index.html": "/public/index.html",
-    "main.1fcd3004.css.map": "/public/static/css/main.1fcd3004.css.map",
-    "main.6ee185fe.js.map": "/public/static/js/main.6ee185fe.js.map"
+    "main.css": "./static/css/main.1fcd3004.css",
+    "main.js": "./static/js/main.00b44ced.js",
+    "static/media/metalbeating.png": "./static/media/metalbeating.7b22e5cdd28d32acfcb1.png",
+    "static/media/IoTDesignDoc.png": "./static/media/IoTDesignDoc.2c1f82bb51eab09b1e78.png",
+    "static/media/IoTProj.png": "./static/media/IoTProj.e651aaddb7db610f703e.png",
+    "static/media/headshot.jpg": "./static/media/headshot.dd1757f14a8b085f0886.jpg",
+    "static/media/gaussian_blur.png": "./static/media/gaussian_blur.fd6362c7005d4442c140.png",
+    "static/media/DMV_Logo.png": "./static/media/DMV_Logo.df9f2b5b9f2410b412dd.png",
+    "static/media/UCDavisUnofficialSeal_2Color_0.png": "./static/media/UCDavisUnofficialSeal_2Color_0.d021cbb727bff5d088be.png",
+    "static/media/MSC-Logo_Rev2a.png": "./static/media/MSC-Logo_Rev2a.fd5aafdb1b47346df866.png",
+    "static/media/splash.svg": "./static/media/splash.20250be80b9fb84f8a5c17182d832bfc.svg",
+    "static/media/michigan.webp": "./static/media/michigan.dfbce88764b4694ef904.webp",
+    "index.html": "./index.html",
+    "main.1fcd3004.css.map": "./static/css/main.1fcd3004.css.map",
+    "main.00b44ced.js.map": "./static/js/main.00b44ced.js.map"
   },
   "entrypoints": [
     "static/css/main.1fcd3004.css",
-    "static/js/main.6ee185fe.js"
+    "static/js/main.00b44ced.js"
   ]
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
@@ -10,7 +10,7 @@ import metalbeating from './assets/images/metalbeating.png';
 import ucdavisSeal from './assets/images/UCDavisUnofficialSeal_2Color_0.png';
 import iotProj from './assets/images/IoTProj.png';
 import iotDesignDoc from './assets/images/IoTDesignDoc.png';
-import gaussian from './assets/images/gaussian.webp';
+import gaussian from './assets/images/gaussian_blur.png';
 import dmvLogo from './assets/images/DMV_Logo.png';
 import splashLogo from './assets/images/splash.svg';
 import michiganLogo from './assets/images/michigan.webp';
@@ -209,6 +209,64 @@ function About() {
 }
 
 function Education() {
+    // State to track which courses are expanded
+    const [expandedCourses, setExpandedCourses] = useState({});
+    
+    // Toggle the expanded state of a course
+    const toggleCourse = (courseId) => {
+        setExpandedCourses(prev => ({
+            ...prev,
+            [courseId]: !prev[courseId]
+        }));
+    };
+    
+    // Course data with tech stacks
+    const programmingCourses = [
+        { id: 'ecs36b', name: 'Object Oriented Programming (ECS 36B)', techStack: ['C++', 'Java', 'Git', 'Make'] },
+        { id: 'ecs36c', name: 'Data Structures & Algorithms (ECS 36C/122A)', techStack: ['Python', 'C++', 'Big O Analysis', 'Graph Algorithms'] },
+        { id: 'ecs132', name: 'Statistical Programming (ECS 132)', techStack: ['R', 'Python', 'NumPy', 'Pandas', 'Statistical Analysis'] },
+        { id: 'ecs160', name: 'Software Engineering (ECS 160)', techStack: ['UML', 'Agile', 'JavaScript', 'Design Patterns'] },
+        { id: 'ecs170', name: 'Artificial Intelligence (ECS 170)', techStack: ['Python', 'TensorFlow', 'PyTorch', 'Neural Networks'] },
+        { id: 'ecs140', name: 'Programming Languages (ECS 140)', techStack: ['Functional Programming', 'Haskell', 'Prolog', 'Lambda Calculus'] },
+    ];
+    
+    const systemCourses = [
+        { id: 'ecs150', name: 'Operating Systems (ECS 150)', techStack: ['C', 'x86 Assembly', 'Semaphores', 'Memory Management'] },
+        { id: 'ecs154', name: 'Computer Architecture (ECS 154A/154B)', techStack: ['RISC-V', 'Verilog', 'Cache Design', 'Pipelining'] },
+        { id: 'eec172', name: 'Embedded Systems (EEC 172)', techStack: ['C', 'ARM', 'TI CC3200', 'I2C/SPI Protocols'] },
+        { id: 'ecs152', name: 'Computer Networks (ECS 152)', techStack: ['Socket Programming', 'TCP/IP', 'Network Protocols', 'Wireshark'] },
+        { id: 'eec180', name: 'Digital Systems (EEC 180)', techStack: ['Verilog', 'FPGA', 'Digital Logic', 'Hardware Description'] },
+        { id: 'eec100', name: 'Analog Circuits (EEC 100)', techStack: ['SPICE', 'Oscilloscopes', 'Circuit Analysis', 'Amplifier Design'] },
+    ];
+    
+    // Render a course with its tech stack dropdown
+    const renderCourse = (course) => {
+        const isExpanded = expandedCourses[course.id];
+        
+        return (
+            <li key={course.id} className="course-item">
+                <div 
+                    className="course-header" 
+                    onClick={() => toggleCourse(course.id)}
+                >
+                    <span>{course.name}</span>
+                    <i className={`bi ${isExpanded ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
+                </div>
+                
+                {isExpanded && (
+                    <div className="tech-stack-dropdown">
+                        <div className="tech-stack-title">Tech Stack:</div>
+                        <div className="tech-stack-items">
+                            {course.techStack.map((tech, index) => (
+                                <span key={index} className="tech-stack-item">{tech}</span>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </li>
+        );
+    };
+    
     return (
         <section className="education-section py-5 mt-5">
             <div className="container">
@@ -235,18 +293,17 @@ function Education() {
                                     Founding Software Lead @ <a href="https://cyclone-robosub.github.io" target="_blank" rel="noopener noreferrer">Cyclone Robosub</a>
                                 </div>
                                 
-                                <h5 className="courses-title">Relevant Coursework</h5>
                                 <div className="row">
                                     <div className="col-md-6">
+                                        <h6 className="course-category"><b>Programming Theory Courses</b></h6>
                                         <ul className="courses-list">
-                                            <li>Object Oriented Programming (C++/Java)</li>
-                                            <li>Data Structures & Algorithms (Python)</li>
+                                            {programmingCourses.map(course => renderCourse(course))}
                                         </ul>
                                     </div>
                                     <div className="col-md-6">
+                                        <h6 className="course-category"><b>System Level Courses</b></h6>
                                         <ul className="courses-list">
-                                            <li>Operating Systems, Embedded Systems, Computer Networks</li>
-                                            <li>Graduate and Undergraduate Computer Architecture</li>
+                                            {systemCourses.map(course => renderCourse(course))}
                                         </ul>
                                     </div>
                                 </div>
@@ -337,8 +394,9 @@ function Internships() {
     );
 }
 
-const ProjectCard = ({ imgSrc, title, date, description, link = null, isFeatured = false, techStack = [] }) => {
+const ProjectCard = ({ imgSrc, title, date, description, link = null, isFeatured = false, techStack = [], children }) => {
     const [hovered, setHovered] = useState(false);
+    const [detailsExpanded, setDetailsExpanded] = useState(false);
     
     return (
         <div 
@@ -347,11 +405,11 @@ const ProjectCard = ({ imgSrc, title, date, description, link = null, isFeatured
             onMouseLeave={() => setHovered(false)}
         >
             <div className="project-image">
-                <img src={imgSrc} alt={title} className="img-fluid" />
+                <img src={imgSrc} alt={title} className={`img-fluid ${imgSrc === gaussian ? 'sharp-image' : ''}`} />
                 <div className={`project-overlay ${hovered ? 'hovered' : ''}`}>
                     {link && (
                         <a href={link} target="_blank" rel="noopener noreferrer" className="project-link">
-                            <i className="bi bi-link-45deg"></i> View Project
+                            <i className="bi bi-link-45deg"></i> View Code
                         </a>
                     )}
                 </div>
@@ -365,12 +423,62 @@ const ProjectCard = ({ imgSrc, title, date, description, link = null, isFeatured
                 <h3 className="project-title">{title}</h3>
                 <div className="project-date">{date}</div>
                 <p className="project-description">{description}</p>
+                
+                {children && (
+                    <div className="project-details mt-3">
+                        <button 
+                            className="btn btn-sm btn-outline-primary d-flex align-items-center"
+                            onClick={() => setDetailsExpanded(!detailsExpanded)}
+                        >
+                            <i className={`bi bi-chevron-${detailsExpanded ? 'up' : 'down'} me-1`}></i>
+                            {detailsExpanded ? 'Hide Details' : 'Show Details'}
+                        </button>
+                        
+                        {detailsExpanded && (
+                            <div className="details-content mt-3">
+                                {children}
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );
 }
 
 function Projects() {
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [processedImage, setProcessedImage] = useState(null);
+    const [sigmaValue, setSigmaValue] = useState(1.5);
+    const [isProcessing, setIsProcessing] = useState(false);
+    const fileInputRef = useRef(null);
+    
+    const handleImageSelect = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setSelectedImage(e.target.result);
+                setProcessedImage(null); // Reset processed image
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    
+    const processImage = () => {
+        if (!selectedImage) return;
+        
+        setIsProcessing(true);
+        
+        // Simulate processing time
+        setTimeout(() => {
+            // In a real implementation, this would call the actual Gaussian blur algorithm
+            // For now, we'll just show the original image with a CSS blur filter
+            setProcessedImage(selectedImage);
+            setIsProcessing(false);
+        }, 1500);
+    };
+    
     return (
         <section className="projects-section py-5 mt-5">
             <div className="container">
@@ -381,53 +489,109 @@ function Projects() {
                 
                 <div className="row g-4">
                     <div className="col-lg-6">
-                        <div className="project-card featured h-100">
-                            <div className="project-image">
-                                <img src={iotProj} alt="IoT Smart Home Device" className="img-fluid" />
+                        <ProjectCard 
+                            imgSrc={iotProj}
+                            title="IoT Smart Home Device"
+                            date="June 2024"
+                            description="Designed and implemented C-based firmware on the TI CC3200 embedded board, utilizing I2C and SPI drivers to interface with sensors for real-time data collection. Integrated AWS services for voice commands."
+                            isFeatured={true}
+                            techStack={["C", "Embedded Systems", "AWS", "IoT"]}
+                        >
+                            <div className="design-doc-container">
+                                <h6 className="design-doc-title">Backend Design Document</h6>
+                                <img src={iotDesignDoc} alt="IoT Design Document" className="img-fluid design-doc-image" />
                             </div>
-                            <div className="project-content">
-                                <div className="project-tags">
-                                    {["C", "Embedded Systems", "AWS", "IoT"].map((tech, index) => (
-                                        <span key={index} className="tech-tag">{tech}</span>
-                                    ))}
-                                </div>
-                                <h3 className="project-title">IoT Smart Home Device</h3>
-                                <div className="project-date">June 2024</div>
-                                <p className="project-description">
-                                    Designed and implemented C-based firmware on the TI CC3200 embedded board, utilizing I2C and SPI drivers to interface with sensors for real-time data collection. Integrated AWS services for voice commands.
-                                </p>
-                                
-                                <div className="design-doc-container mt-3">
-                                    <h6 className="design-doc-title">Backend Design Document</h6>
-                                    <img src={iotDesignDoc} alt="IoT Design Document" className="img-fluid design-doc-image" />
-                                </div>
-                            </div>
-                        </div>
+                        </ProjectCard>
                     </div>
                     
                     <div className="col-lg-6">
-                        <div className="project-card h-100">
-                            <div className="project-image">
-                                <img src={gaussian} alt="Gaussian Blur with CUDA" className="img-fluid" />
-                                <div className="project-overlay">
-                                    <a href="https://github.com/higgsboson20/CUDA_Gaussian_Blur" target="_blank" rel="noopener noreferrer" className="project-link">
-                                        <i className="bi bi-link-45deg"></i> View Project
-                                    </a>
+                        <ProjectCard 
+                            imgSrc={gaussian}
+                            title="Gaussian Blur with CUDA"
+                            date="May 2024"
+                            description="Developed a GPU-accelerated image processing pipeline using CUDA, implementing parallel algorithms for edge detection and filtering. The solution dramatically improved processing speed for high-resolution images."
+                            link="https://github.com/higgsboson20/CUDA_Gaussian_Blur"
+                            techStack={["CUDA", "C++", "Parallel Computing", "Image Processing"]}
+                        >
+                            <div className="demo-container">
+                                <h6 className="demo-title">Try It Yourself</h6>
+                                <p className="demo-description">Upload an image to see the Gaussian blur effect in action.</p>
+                                
+                                <div className="demo-controls">
+                                    <input 
+                                        type="file" 
+                                        id="image-upload" 
+                                        className="d-none" 
+                                        accept="image/*"
+                                        onChange={handleImageSelect}
+                                        ref={fileInputRef}
+                                    />
+                                    <button 
+                                        className="btn btn-outline-primary btn-sm me-2"
+                                        onClick={() => fileInputRef.current.click()}
+                                    >
+                                        <i className="bi bi-upload me-1"></i> Select Image
+                                    </button>
+                                    
+                                    <div className="sigma-control d-inline-block">
+                                        <label htmlFor="sigma-value" className="me-2">Blur Intensity (σ):</label>
+                                        <input 
+                                            type="range" 
+                                            id="sigma-value" 
+                                            className="form-range d-inline-block" 
+                                            min="0.5" 
+                                            max="5" 
+                                            step="0.1" 
+                                            value={sigmaValue}
+                                            onChange={(e) => setSigmaValue(parseFloat(e.target.value))}
+                                            style={{width: "100px"}}
+                                        />
+                                        <span className="ms-2">{sigmaValue.toFixed(1)}</span>
+                                    </div>
+                                    
+                                    <button 
+                                        className="btn btn-primary btn-sm ms-2"
+                                        onClick={processImage}
+                                        disabled={!selectedImage || isProcessing}
+                                    >
+                                        {isProcessing ? 
+                                            <><i className="bi bi-hourglass-split me-1"></i> Processing...</> : 
+                                            <><i className="bi bi-play-fill me-1"></i> Apply Blur</>
+                                        }
+                                    </button>
                                 </div>
+                                
+                                {selectedImage && (
+                                    <div className="demo-result mt-3">
+                                        <div className="row g-2">
+                                            <div className="col-6">
+                                                <div className="image-container">
+                                                    <p className="text-center mb-1">Original</p>
+                                                    <img src={selectedImage} alt="Original" className="img-fluid demo-image" />
+                                                </div>
+                                            </div>
+                                            <div className="col-6">
+                                                <div className="image-container">
+                                                    <p className="text-center mb-1">Processed</p>
+                                                    {processedImage ? (
+                                                        <img 
+                                                            src={processedImage} 
+                                                            alt="Processed" 
+                                                            className="img-fluid demo-image" 
+                                                            style={{filter: `blur(${sigmaValue}px)`}}
+                                                        />
+                                                    ) : (
+                                                        <div className="placeholder-image d-flex align-items-center justify-content-center">
+                                                            <span>Click "Apply Blur" to process</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            <div className="project-content">
-                                <div className="project-tags">
-                                    {["CUDA", "C++", "Parallel Computing", "Image Processing"].map((tech, index) => (
-                                        <span key={index} className="tech-tag">{tech}</span>
-                                    ))}
-                                </div>
-                                <h3 className="project-title">Gaussian Blur with CUDA</h3>
-                                <div className="project-date">May 2024</div>
-                                <p className="project-description">
-                                    Developed a GPU-accelerated image processing pipeline using CUDA, implementing parallel algorithms for edge detection and filtering. The solution dramatically improved processing speed for high-resolution images.
-                                </p>
-                            </div>
-                        </div>
+                        </ProjectCard>
                     </div>
                 </div>
             </div>

@@ -15,6 +15,8 @@ import dmvLogo from './assets/images/DMV_Logo.png';
 import splashLogo from './assets/images/splash.svg';
 import michiganLogo from './assets/images/michigan.webp';
 import mscLogo from './assets/images/MSC-Logo_Rev2a.png';
+import sierraLogo from './assets/images/sierra.png';
+import tstLogo from './assets/images/TST.png';
 
 function App() {
     return (
@@ -90,7 +92,7 @@ function Navigation() {
                             <Link className="nav-link mx-2" to="/education" onClick={() => setExpanded(false)}>Education</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link mx-2" to="/internships" onClick={() => setExpanded(false)}>Internships</Link>
+                            <Link className="nav-link mx-2" to="/internships" onClick={() => setExpanded(false)}>Professional Experience</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link mx-2" to="/projects" onClick={() => setExpanded(false)}>Projects</Link>
@@ -353,6 +355,16 @@ function Internships() {
                 </div>
                 
                 <div className="timeline">
+
+                    <ExperienceCard 
+                        imgSrc={tstLogo}
+                        title="Incoming Software Engineering Intern"
+                        company="Two Six Technologies"
+                        date="June 2025 - September 2025"
+                        description={ <>Implementing solutions and developing workflows for TST's <a href = "https://twosixtech.com/products/ike/" target="_blank" rel="noopener noreferrer"> IKE platform </a>. </>}
+                        skills={["Python", "DevOps", "GovTech"]}
+                    />
+
                     <ExperienceCard 
                         imgSrc={dmvLogo}
                         title="Software Engineer Intern"
@@ -374,12 +386,23 @@ function Internships() {
                     <ExperienceCard 
                         imgSrc={michiganLogo}
                         title="Computational Materials Researcher"
-                        company="University of Michigan ECE"
+                        company="University of Michigan Department of Electrical Engineering and Computer Science"
                         date="May 2023 - August 2023"
                         description="Conducted hands-on and computational research on wide bandgap semiconductors, specifically Gallium Nitride, using C++, Python, and MATLAB for simulations and data analysis."
                         skills={["C++", "Python", "MATLAB", "Research", "Data Analysis"]}
                     />
                     
+
+                    <ExperienceCard
+                        imgSrc={sierraLogo}
+                        title="Math Tutor"
+                        company="Sierra College Math Center"
+                        date="January 2022 - May 2023"
+                        description="Provided high-quality, in-person tutoring for hundreds of individuals in the Sierra College math department, from calculus to differential equations."
+                        skills={["Mentoring","Teaching","Calculus","Differential Equations","Linear Algebra"]}
+
+                    />
+
                     <ExperienceCard 
                         imgSrc={mscLogo}
                         title="Embedded Software Engineering Intern"
@@ -488,6 +511,113 @@ function Projects() {
                 </div>
                 
                 <div className="row g-4">
+                    <div className="col-lg-6">
+                        <ProjectCard 
+                            imgSrc={iotProj}
+                            title="IoT Smart Home Device"
+                            date="June 2024"
+                            description="Designed and implemented C-based firmware on the TI CC3200 embedded board, utilizing I2C and SPI drivers to interface with sensors for real-time data collection. Integrated AWS services for voice commands."
+                            isFeatured={true}
+                            techStack={["C", "Embedded Systems", "AWS", "IoT"]}
+                        >
+                            <div className="design-doc-container">
+                                <h6 className="design-doc-title">Backend Design Document</h6>
+                                <img src={iotDesignDoc} alt="IoT Design Document" className="img-fluid design-doc-image" />
+                            </div>
+                        </ProjectCard>
+                    </div>
+                    
+                    <div className="col-lg-6">
+                        <ProjectCard 
+                            imgSrc={gaussian}
+                            title="Gaussian Blur with CUDA"
+                            date="May 2024"
+                            description="Developed a GPU-accelerated image processing pipeline using CUDA, implementing parallel algorithms for edge detection and filtering. The solution dramatically improved processing speed for high-resolution images."
+                            link="https://github.com/higgsboson20/CUDA_Gaussian_Blur"
+                            techStack={["CUDA", "C++", "Parallel Computing", "Image Processing"]}
+                        >
+                            <div className="demo-container">
+                                <h6 className="demo-title">Try It Yourself</h6>
+                                <p className="demo-description">Upload an image to see the Gaussian blur effect in action.</p>
+                                
+                                <div className="demo-controls">
+                                    <input 
+                                        type="file" 
+                                        id="image-upload" 
+                                        className="d-none" 
+                                        accept="image/*"
+                                        onChange={handleImageSelect}
+                                        ref={fileInputRef}
+                                    />
+                                    <button 
+                                        className="btn btn-outline-primary btn-sm me-2"
+                                        onClick={() => fileInputRef.current.click()}
+                                    >
+                                        <i className="bi bi-upload me-1"></i> Select Image
+                                    </button>
+                                    
+                                    <div className="sigma-control d-inline-block">
+                                        <label htmlFor="sigma-value" className="me-2">Blur Intensity (σ):</label>
+                                        <input 
+                                            type="range" 
+                                            id="sigma-value" 
+                                            className="form-range d-inline-block" 
+                                            min="0.5" 
+                                            max="5" 
+                                            step="0.1" 
+                                            value={sigmaValue}
+                                            onChange={(e) => setSigmaValue(parseFloat(e.target.value))}
+                                            style={{width: "100px"}}
+                                        />
+                                        <span className="ms-2">{sigmaValue.toFixed(1)}</span>
+                                    </div>
+                                    
+                                    <button 
+                                        className="btn btn-primary btn-sm ms-2"
+                                        onClick={processImage}
+                                        disabled={!selectedImage || isProcessing}
+                                    >
+                                        {isProcessing ? 
+                                            <><i className="bi bi-hourglass-split me-1"></i> Processing...</> : 
+                                            <><i className="bi bi-play-fill me-1"></i> Apply Blur</>
+                                        }
+                                    </button>
+                                </div>
+                                
+                                {selectedImage && (
+                                    <div className="demo-result mt-3">
+                                        <div className="row g-2">
+                                            <div className="col-6">
+                                                <div className="image-container">
+                                                    <p className="text-center mb-1">Original</p>
+                                                    <img src={selectedImage} alt="Original" className="img-fluid demo-image" />
+                                                </div>
+                                            </div>
+                                            <div className="col-6">
+                                                <div className="image-container">
+                                                    <p className="text-center mb-1">Processed</p>
+                                                    {processedImage ? (
+                                                        <img 
+                                                            src={processedImage} 
+                                                            alt="Processed" 
+                                                            className="img-fluid demo-image" 
+                                                            style={{filter: `blur(${sigmaValue}px)`}}
+                                                        />
+                                                    ) : (
+                                                        <div className="placeholder-image d-flex align-items-center justify-content-center">
+                                                            <span>Click "Apply Blur" to process</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </ProjectCard>
+                    </div>
+                </div>
+                <div className="row g-4 mt-4">
                     <div className="col-lg-6">
                         <ProjectCard 
                             imgSrc={iotProj}

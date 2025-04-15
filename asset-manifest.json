@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1fcd3004.css",
-    "main.js": "/static/js/main.030cc42f.js",
+    "main.js": "/static/js/main.7e5f4ddd.js",
     "static/media/metalbeating.png": "/static/media/metalbeating.7b22e5cdd28d32acfcb1.png",
     "static/media/IoTDesignDoc.png": "/static/media/IoTDesignDoc.2c1f82bb51eab09b1e78.png",
     "static/media/IoTProj.png": "/static/media/IoTProj.e651aaddb7db610f703e.png",
@@ -16,10 +16,10 @@
     "static/media/michigan.webp": "/static/media/michigan.dfbce88764b4694ef904.webp",
     "index.html": "/index.html",
     "main.1fcd3004.css.map": "/static/css/main.1fcd3004.css.map",
-    "main.030cc42f.js.map": "/static/js/main.030cc42f.js.map"
+    "main.7e5f4ddd.js.map": "/static/js/main.7e5f4ddd.js.map"
   },
   "entrypoints": [
     "static/css/main.1fcd3004.css",
-    "static/js/main.030cc42f.js"
+    "static/js/main.7e5f4ddd.js"
   ]
 }

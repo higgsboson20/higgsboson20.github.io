@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1fcd3004.css",
-    "main.js": "/static/js/main.f18f604a.js",
+    "main.js": "/static/js/main.7132afb0.js",
     "static/media/metalbeating.png": "/static/media/metalbeating.7b22e5cdd28d32acfcb1.png",
     "static/media/IoTDesignDoc.png": "/static/media/IoTDesignDoc.2c1f82bb51eab09b1e78.png",
     "static/media/IoTProj.png": "/static/media/IoTProj.e651aaddb7db610f703e.png",
@@ -11,13 +11,15 @@
     "static/media/UCDavisUnofficialSeal_2Color_0.png": "/static/media/UCDavisUnofficialSeal_2Color_0.d021cbb727bff5d088be.png",
     "static/media/MSC-Logo_Rev2a.png": "/static/media/MSC-Logo_Rev2a.fd5aafdb1b47346df866.png",
     "static/media/splash.svg": "/static/media/splash.20250be80b9fb84f8a5c17182d832bfc.svg",
+    "static/media/sierra.png": "/static/media/sierra.dd518d9b4fce66244306.png",
+    "static/media/TST.png": "/static/media/TST.fbeca6fdc128d465851e.png",
     "static/media/michigan.webp": "/static/media/michigan.dfbce88764b4694ef904.webp",
     "index.html": "/index.html",
     "main.1fcd3004.css.map": "/static/css/main.1fcd3004.css.map",
-    "main.f18f604a.js.map": "/static/js/main.f18f604a.js.map"
+    "main.7132afb0.js.map": "/static/js/main.7132afb0.js.map"
   },
   "entrypoints": [
     "static/css/main.1fcd3004.css",
-    "static/js/main.f18f604a.js"
+    "static/js/main.7132afb0.js"
   ]
 }
